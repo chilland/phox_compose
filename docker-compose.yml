@@ -4,3 +4,10 @@ phox:
     - mongo
 mongo:
   image: mongo:latest
+cliff:
+  image: ahalterman/cliff
+  expose:
+    - "8080"
+  ports:
+    - "8999:8080"
+  command: /root/apache-tomcat-7.0.59/bin/catalina.sh run
