@@ -1,0 +1,6 @@
+phox:
+  image: phox:latest
+  links:
+    - mongo
+mongo:
+  image: mongo:latest
