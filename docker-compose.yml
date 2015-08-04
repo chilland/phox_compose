@@ -1,13 +1,25 @@
-phox:
-  image: phox:latest
+scraper:
+  image: scraper
   links:
-    - mongo
+   - mongo
+   - rabbitmq
 mongo:
-  image: mongo:latest
-cliff:
-  image: ahalterman/cliff
-  expose:
-    - "8080"
+  image: mongo
+rabbitmq:
+  image: rabbitmq
+phox:
+  image: phox_pipe
+  links:
+   - rabbitmq
+   - hypnos
+hypnos:
+  image: caerusassociates/hypnos
+  links:
+   - ccnlp
+   - petrarch
   ports:
-    - "8999:8080"
-  command: /root/apache-tomcat-7.0.59/bin/catalina.sh run
+   - "5002:5002"
+ccnlp:
+  image: caerusassociates/ccnlp:1.0.0
+petrarch:
+  image: petrarch
